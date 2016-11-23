@@ -6,17 +6,22 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.content.Intent;
+import android.widget.RelativeLayout.LayoutParams;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<String> list = new ArrayList<String>();
+    ArrayList<String> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +31,20 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        RelativeLayout relativeLayout = (RelativeLayout)findViewById(R.id.content_scrolling);
+
         TextView randQuote = new TextView (this);
-//        randQuote.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        randQuote.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         randQuote.setText(randomQuote(list));
+        randQuote.setTextSize(20);
+
+        relativeLayout.addView(randQuote);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 Snackbar.make(view, randomQuote(list), Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -58,7 +69,10 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
             return true;
+        } else if (id == R.id.action_quotes) {
+            startActivity(new Intent(getApplicationContext(), QuoteList.class));
         }
 
         return super.onOptionsItemSelected(item);
@@ -74,4 +88,6 @@ public class MainActivity extends AppCompatActivity {
     String randomQuote(ArrayList<String> list) {
         return list.get((int) (Math.random() * list.size()));
     }
+
+
 }
