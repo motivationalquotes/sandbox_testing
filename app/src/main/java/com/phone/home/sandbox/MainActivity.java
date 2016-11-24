@@ -1,12 +1,13 @@
 package com.phone.home.sandbox;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.Menu;
@@ -21,6 +22,9 @@ import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
+    NotificationCompat.Builder notification;
+    public static final int uniqueID = 5127635;
+
     ArrayList<String> list = new ArrayList<>();
 
     @Override
@@ -31,22 +35,43 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        notification = new NotificationCompat.Builder(this);
+        notification.setAutoCancel(true);
+
         RelativeLayout relativeLayout = (RelativeLayout)findViewById(R.id.content_scrolling);
 
-        TextView randQuote = new TextView (this);
-        randQuote.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        randQuote.setText(randomQuote(list));
-        randQuote.setTextSize(20);
-
-        relativeLayout.addView(randQuote);
+//        TextView randQuote = new TextView (this);
+//        randQuote.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+//        randQuote.setText(randomQuote(list));
+//        randQuote.setTextSize(20);
+//
+//        relativeLayout.addView(randQuote);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-                Snackbar.make(view, randomQuote(list), Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, randomQuote(list), Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                String newQuote = randomQuote(list);
+                //Send Notifcation
+                //TODO: Service to automatically send notifications
+                notification.setSmallIcon(R.drawable.ic_notifications_black_24dp)
+                    .setTicker("New Quote: " + newQuote)
+                    .setWhen(System.currentTimeMillis())
+                    .setContentTitle("New Quote")
+                    .setContentText(newQuote);
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                notification.setContentIntent(pendingIntent);
+
+                NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+                nm.notify(uniqueID, notification.build());
+
             }
         });
 
