@@ -1,7 +1,9 @@
 package com.phone.home.sandbox;
 
+import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,12 +20,13 @@ import android.content.Intent;
 import android.widget.RelativeLayout.LayoutParams;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
-    NotificationCompat.Builder notification;
-    public static final int uniqueID = 5127635;
+//    NotificationCompat.Builder notification;
+//    public static final int uniqueID = 5127635;
 
     ArrayList<String> list = new ArrayList<>();
 
@@ -35,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        notification = new NotificationCompat.Builder(this);
-        notification.setAutoCancel(true);
+//        notification = new NotificationCompat.Builder(this);
+//        notification.setAutoCancel(true);
 
         RelativeLayout relativeLayout = (RelativeLayout)findViewById(R.id.content_scrolling);
 
@@ -57,20 +60,22 @@ public class MainActivity extends AppCompatActivity {
                 String newQuote = randomQuote(list);
                 //Send Notifcation
                 //TODO: Service to automatically send notifications
-                notification.setSmallIcon(R.drawable.ic_notifications_black_24dp)
-                    .setTicker("New Quote: " + newQuote)
-                    .setWhen(System.currentTimeMillis())
-                    .setContentTitle("New Quote")
-                    .setContentText(newQuote);
+//                notification.setSmallIcon(R.drawable.ic_notifications_black_24dp)
+//                    .setTicker("New Quote: " + newQuote)
+//                    .setWhen(System.currentTimeMillis())
+//                    .setContentTitle("New Quote")
+//                    .setContentText(newQuote);
+//
+//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+//
+//                notification.setContentIntent(pendingIntent);
+//
+//                NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//
+//                nm.notify(uniqueID, notification.build());
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-                notification.setContentIntent(pendingIntent);
-
-                NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-
-                nm.notify(uniqueID, notification.build());
+                setAlarm(view);
 
             }
         });
@@ -112,6 +117,16 @@ public class MainActivity extends AppCompatActivity {
 
     String randomQuote(ArrayList<String> list) {
         return list.get((int) (Math.random() * list.size()));
+    }
+
+    public void setAlarm(View view) {
+        Long alertTime = new GregorianCalendar().getTimeInMillis()+5*1000;
+
+        Intent alertIntent = new Intent(this, AlertReciever.class);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime, PendingIntent.getBroadcast(this, 5127645, alertIntent, PendingIntent.FLAG_UPDATE_CURRENT));
     }
 
 
