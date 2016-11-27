@@ -1,23 +1,20 @@
 package com.phone.home.sandbox;
 
 import android.app.AlarmManager;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.content.Intent;
-import android.widget.RelativeLayout.LayoutParams;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -41,8 +38,10 @@ public class MainActivity extends AppCompatActivity {
 //        notification = new NotificationCompat.Builder(this);
 //        notification.setAutoCancel(true);
 
-        RelativeLayout relativeLayout = (RelativeLayout)findViewById(R.id.content_scrolling);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        final Boolean notify = sharedPref.getBoolean("notifications_new_message", false);
 
+//        RelativeLayout relativeLayout = (RelativeLayout)findViewById(R.id.content_scrolling);
 //        TextView randQuote = new TextView (this);
 //        randQuote.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 //        randQuote.setText(randomQuote(list));
@@ -54,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
 //                Snackbar.make(view, randomQuote(list), Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
                 String newQuote = randomQuote(list);
@@ -74,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
 //                NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 //
 //                nm.notify(uniqueID, notification.build());
-
-                setAlarm(view);
+                if(notify)
+                    setAlarm(newQuote);
 
             }
         });
@@ -119,13 +118,13 @@ public class MainActivity extends AppCompatActivity {
         return list.get((int) (Math.random() * list.size()));
     }
 
-    public void setAlarm(View view) {
+    public void setAlarm(String myQuote) {
         Long alertTime = new GregorianCalendar().getTimeInMillis()+5*1000;
 
-        Intent alertIntent = new Intent(this, AlertReciever.class);
+        Intent alertIntent = new Intent(this, AlertReceiver.class);
+        alertIntent.putExtra("QUOTE", myQuote);
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
         alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime, PendingIntent.getBroadcast(this, 5127645, alertIntent, PendingIntent.FLAG_UPDATE_CURRENT));
     }
 
