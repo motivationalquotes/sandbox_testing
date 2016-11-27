@@ -5,11 +5,11 @@
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/title_settings"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_quotes"
         android:orderInCategory="0"
-        android:title="@string/title_activity_quotes"
+        android:title="@string/title_quote_list"
         app:showAsAction="never" />
 </menu>

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Motivational Quotes</string>
-    <string name="action_settings">Settings</string>
     <string name="quotes">Finish what you start.\n
         Have integrity.\n
         Have values.\n
@@ -127,8 +126,11 @@
         Take action.\n
         Ask questions.\n
         Learn. Teach. Do.\n
-        Do Yoga.\n</string>
-
+        Do Yoga.\n\n</string>
+    <string name="title_main">Motivational Quotes</string>
+    <string name="title_quote_list">List of Quotes</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_settings_general">General</string>
     <string-array name="interval_entries">
         <item>Once a Week</item>
         <item>Every Other Day</item>
@@ -137,7 +139,6 @@
         <item>Once an Hour</item>
         <item>Every minute</item>
     </string-array>
-
     <string-array name="interval_values">
         <item>10080</item>
         <item>2880</item>
@@ -146,10 +147,5 @@
         <item>60</item>
         <item>1</item>
     </string-array>
-
-    <string name="title_quote_list">List of Quotes</string>
-
-    <string name="title_main">Motivational Quotes</string>
-
-    <string name="title_settings">Settings</string>
+    <string name="title_settings_notification">Notifications</string>
 </resources>

@@ -24,12 +24,13 @@ public class AlertReceiver extends BroadcastReceiver {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class), 0);
 
         NotificationCompat.Builder notification;
-        final int uniqueID = 5127645;
+        final int uniqueID = (int) (Math.random() * Integer.MAX_VALUE);
 
         notification = new NotificationCompat.Builder(context);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        String ringtone = sharedPref.getString("notifications_new_message_ringtone", "");
+        String ringtone = sharedPref.getString("notification_ringtone", "");
+        Boolean vibrate = sharedPref.getBoolean("notification_vibrate", true);
 
         notification.setSmallIcon(R.drawable.ic_notifications_black_24dp)
                 .setTicker(msgAlert)
@@ -37,9 +38,13 @@ public class AlertReceiver extends BroadcastReceiver {
                 .setContentTitle(msg)
                 .setContentText(msgText)
                 .setAutoCancel(true)
-                .setSound(Uri.parse(ringtone));
-        notification.setContentIntent(pendingIntent);
-        notification.setDefaults(NotificationCompat.DEFAULT_LIGHTS | NotificationCompat.DEFAULT_VIBRATE);
+                .setSound(Uri.parse(ringtone))
+                .setContentIntent(pendingIntent);
+
+        if(vibrate)
+            notification.setDefaults(NotificationCompat.DEFAULT_LIGHTS | NotificationCompat.DEFAULT_VIBRATE);
+        else
+            notification.setDefaults(NotificationCompat.DEFAULT_LIGHTS);
 
         NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         nm.notify(uniqueID, notification.build());

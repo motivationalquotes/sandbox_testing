@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 //        notification.setAutoCancel(true);
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        final Boolean notify = sharedPref.getBoolean("notifications_new_message", false);
+        final Boolean notify = sharedPref.getBoolean("notify", false);
 
 //        RelativeLayout relativeLayout = (RelativeLayout)findViewById(R.id.content_scrolling);
 //        TextView randQuote = new TextView (this);

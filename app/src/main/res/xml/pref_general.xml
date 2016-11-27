@@ -4,7 +4,7 @@
         android:defaultValue="1440"
         android:key="general_interval"
         android:title="Alert Interval"
-        android:entries="@array/list_preference_entries"
-        android:entryValues="@array/list_preference_entry_values"/>
+        android:entries="@array/interval_entries"
+        android:entryValues="@array/interval_values"/>
 
 </PreferenceScreen>
