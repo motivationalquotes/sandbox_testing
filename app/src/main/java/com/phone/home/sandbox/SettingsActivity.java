@@ -185,7 +185,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             addPreferencesFromResource(R.xml.pref_general);
             setHasOptionsMenu(true);
 
-
+//            bindPreferenceSummaryToValue(findPreference("general_interval"));
         }
 
         @Override
@@ -211,9 +211,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             addPreferencesFromResource(R.xml.pref_notification);
             setHasOptionsMenu(true);
 
-            bindPreferenceSummaryToValue(findPreference("notification_ringtone"));
-            bindPreferenceSummaryToValue(findPreference("notification_ringtone"));
-            bindPreferenceSummaryToValue(findPreference("notification_ringtone"));
+//            bindPreferenceSummaryToValue(findPreference("notify"));
+//            bindPreferenceSummaryToValue(findPreference("notification_ringtone"));
+//            bindPreferenceSummaryToValue(findPreference("notification_vibrate"));
         }
 
         @Override

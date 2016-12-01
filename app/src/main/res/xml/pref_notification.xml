@@ -7,14 +7,14 @@
 
     <RingtonePreference
         android:defaultValue="content://settings/system/notification_sound"
-        android:dependency="notifications_new_message"
+        android:dependency="notify"
         android:key="notification_ringtone"
         android:ringtoneType="notification"
         android:title="Ringtone" />
 
     <SwitchPreference
         android:defaultValue="true"
-        android:dependency="notifications_new_message"
+        android:dependency="notify"
         android:key="notification_vibrate"
         android:title="Vibrate" />
 
