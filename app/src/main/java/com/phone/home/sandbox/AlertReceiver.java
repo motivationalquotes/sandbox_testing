@@ -1,5 +1,6 @@
 package com.phone.home.sandbox;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -39,7 +40,8 @@ public class AlertReceiver extends BroadcastReceiver {
                 .setContentText(msgText)
                 .setAutoCancel(true)
                 .setSound(Uri.parse(ringtone))
-                .setContentIntent(pendingIntent);
+                .setContentIntent(pendingIntent)
+                .setPriority(Notification.PRIORITY_HIGH);
 
         if(vibrate)
             notification.setDefaults(NotificationCompat.DEFAULT_LIGHTS | NotificationCompat.DEFAULT_VIBRATE);

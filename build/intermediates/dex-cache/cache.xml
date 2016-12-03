@@ -7,8 +7,17 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="ff647adbb8140776ca9f2305579ec7839e917bc5">
+        sha1="145a39f6aca860dd728ed7b27e71754bd689a7df">
         <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_1b78abd4624c04ddcae6f4d26a009c3f1b34343e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\evant\StudioProjects\sandbox_testing\app\libs\okhttp-3.5.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="4b0bb6bfbecbdd42b97ff400af342bfe7f32bc83">
+        <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\2\okhttp-3.5.0_507969799312dad87889c8a9fa26e04dc3ae42e7\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -27,6 +36,42 @@
         revision="25.0.1"
         sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
         <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.2.1_729fd11c461c11ab90a79b74bd008bcc33463b06\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="165d4c067712ce34fd29e385b1acd32145625f29">
+        <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_b31aafd063e60ab6db204ea3df0e76cfd54f3db3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_cac9c9e40dc901eaf8afb3a8fe0653ed51785fd8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_f148912170b0bf51493f7019a4b5fb1a701357d4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_3e2bf4121a6c7a5c29a220028973f3de3f18c1e8\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -84,60 +129,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_b05b49a50737ac065f390daa4ba96bf83db82412\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_96293e3c2cfcda96fc57bc7f05b9c9aae2aa7586\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="165d4c067712ce34fd29e385b1acd32145625f29">
-        <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_b31aafd063e60ab6db204ea3df0e76cfd54f3db3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_cac9c9e40dc901eaf8afb3a8fe0653ed51785fd8\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_f148912170b0bf51493f7019a4b5fb1a701357d4\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_3e2bf4121a6c7a5c29a220028973f3de3f18c1e8\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -171,6 +162,33 @@
         revision="25.0.1"
         sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
         <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_920f5ccd0e02135b9f4141aee9bd192de9d7abbc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_b05b49a50737ac065f390daa4ba96bf83db82412\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\evant\StudioProjects\sandbox_testing\app\libs\okio-1.11.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
+        <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\2\okio-1.11.0_9fdbb114e36d22ca646b61053734c59f9de92dc6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="C:\Users\evant\StudioProjects\sandbox_testing\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_96293e3c2cfcda96fc57bc7f05b9c9aae2aa7586\classes.dex" />
     </item>
 
 </items>

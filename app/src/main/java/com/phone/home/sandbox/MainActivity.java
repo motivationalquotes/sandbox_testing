@@ -13,68 +13,36 @@ import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.RelativeLayout;
 import android.content.Intent;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
-//    NotificationCompat.Builder notification;
-//    public static final int uniqueID = 5127635;
-
-    ArrayList<String> list = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        constructQuoteArray(list);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        notification = new NotificationCompat.Builder(this);
-//        notification.setAutoCancel(true);
-
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         final Boolean notify = sharedPref.getBoolean("notify", false);
 
-//        RelativeLayout relativeLayout = (RelativeLayout)findViewById(R.id.content_scrolling);
-//        TextView randQuote = new TextView (this);
-//        randQuote.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-//        randQuote.setText(randomQuote(list));
-//        randQuote.setTextSize(20);
-//
-//        relativeLayout.addView(randQuote);
+        final TaskParams params = new TaskParams("https://motivationalquotes.herokuapp.com/quote", this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
-//                Snackbar.make(view, randomQuote(list), Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-                String newQuote = randomQuote(list);
+
+                new RetrieveCallTask().execute(params);
+
                 //Send Notifcation
                 //TODO: Service to automatically send notifications
-//                notification.setSmallIcon(R.drawable.ic_notifications_black_24dp)
-//                    .setTicker("New Quote: " + newQuote)
-//                    .setWhen(System.currentTimeMillis())
-//                    .setContentTitle("New Quote")
-//                    .setContentText(newQuote);
-//
-//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-//
-//                notification.setContentIntent(pendingIntent);
-//
-//                NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-//
-//                nm.notify(uniqueID, notification.build());
-                if(notify)
-                    setAlarm(newQuote);
 
             }
         });
@@ -107,16 +75,16 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    void constructQuoteArray(ArrayList<String> list) {
-        Scanner scanner = new Scanner(getResources().openRawResource(R.raw.quotes));
-        while(scanner.hasNextLine()) {
-            list.add(scanner.nextLine());
-        }
-    }
+//    void constructQuoteArray(ArrayList<String> list) {
+//        Scanner scanner = new Scanner(getResources().openRawResource(R.raw.quotes));
+//        while(scanner.hasNextLine()) {
+//            list.add(scanner.nextLine());
+//        }
+//    }
 
-    String randomQuote(ArrayList<String> list) {
-        return list.get((int) (Math.random() * list.size()));
-    }
+//    String randomQuote(ArrayList<String> list) {
+//        return list.get((int) (Math.random() * list.size()));
+//    }
 
     public void setAlarm(String myQuote) {
         Long alertTime = new GregorianCalendar().getTimeInMillis()+5*1000;
@@ -125,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         alertIntent.putExtra("QUOTE", myQuote);
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime, PendingIntent.getBroadcast(this, 5127645, alertIntent, PendingIntent.FLAG_UPDATE_CURRENT));
+        alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime, PendingIntent.getBroadcast(this, (int) (Math.random() * Integer.MAX_VALUE), alertIntent, PendingIntent.FLAG_UPDATE_CURRENT));
     }
 
 
