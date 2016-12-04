@@ -14,14 +14,13 @@ import java.util.GregorianCalendar;
  * Created by jetpackcat on 12/3/2016.
  */
 
-public class ApiCaller {
+class ApiCaller {
 
-    Context context;
-    RequestQueue queue;
-    String url;
-    String result = "";
+    private Context context;
+    private RequestQueue queue;
+    private String url;
 
-    public ApiCaller(Context newContext, String newUrl) {
+    ApiCaller(Context newContext, String newUrl) {
         context = newContext;
         queue = Volley.newRequestQueue(context);
         url = newUrl;
@@ -31,7 +30,7 @@ public class ApiCaller {
         url = newUrl;
     }
 
-    public void get() {
+    void get() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -48,7 +47,7 @@ public class ApiCaller {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                result = "Error: Quote not found.";
+                System.out.println("Error getting from url.");
             }
         });
 

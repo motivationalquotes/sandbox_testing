@@ -13,15 +13,15 @@ import android.preference.PreferenceManager;
 
 public class AlertReceiver extends BroadcastReceiver {
 
-    String quote;
+    private String quote;
 
     @Override
     public void onReceive(Context context, Intent intent) {
         quote = intent.getStringExtra("QUOTE");
-        createNotification(context, "New Quote", quote, "New Quote: " + quote);
+        createNotification(context, quote);
     }
 
-    public void createNotification(Context context, String msg, String msgText, String msgAlert) {
+    private void createNotification(Context context, String quote) {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class), 0);
 
         NotificationCompat.Builder notification;
@@ -34,10 +34,10 @@ public class AlertReceiver extends BroadcastReceiver {
         Boolean vibrate = sharedPref.getBoolean("notification_vibrate", true);
 
         notification.setSmallIcon(R.drawable.ic_notifications_black_24dp)
-                .setTicker(msgAlert)
+                .setTicker("New Quote: " + quote)
                 .setWhen(System.currentTimeMillis())
-                .setContentTitle(msg)
-                .setContentText(msgText)
+                .setContentTitle("New Quote")
+                .setContentText(quote)
                 .setAutoCancel(true)
                 .setSound(Uri.parse(ringtone))
                 .setContentIntent(pendingIntent)
