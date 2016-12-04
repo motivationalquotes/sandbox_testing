@@ -14,9 +14,6 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
-
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         final Boolean notify = sharedPref.getBoolean("notify", false);
 
-        final TaskParams params = new TaskParams("https://motivationalquotes.herokuapp.com/quote", this);
+        final ApiCaller apiCaller = new ApiCaller(this, "https://motivationalquotes.herokuapp.com/quote");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -39,14 +36,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
 
-                new RetrieveCallTask().execute(params);
-
                 //Send Notifcation
                 //TODO: Service to automatically send notifications
 
+//                String quote = apiCaller.get();
+
+                if(notify)
+                    apiCaller.get();
             }
         });
-
 
     }
 
@@ -84,17 +82,16 @@ public class MainActivity extends AppCompatActivity {
 
 //    String randomQuote(ArrayList<String> list) {
 //        return list.get((int) (Math.random() * list.size()));
+//    }z
+
+//    public void setAlarm(String myQuote) {
+////        Long alertTime = new GregorianCalendar().getTimeInMillis()+2*1000;
+////
+////        Intent alertIntent = new Intent(this, AlertReceiver.class);
+////        alertIntent.putExtra("QUOTE", myQuote);
+////
+////        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+////        alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime, PendingIntent.getBroadcast(this, (int) (Math.random() * Integer.MAX_VALUE), alertIntent, PendingIntent.FLAG_UPDATE_CURRENT));
 //    }
-
-    public void setAlarm(String myQuote) {
-        Long alertTime = new GregorianCalendar().getTimeInMillis()+5*1000;
-
-        Intent alertIntent = new Intent(this, AlertReceiver.class);
-        alertIntent.putExtra("QUOTE", myQuote);
-
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime, PendingIntent.getBroadcast(this, (int) (Math.random() * Integer.MAX_VALUE), alertIntent, PendingIntent.FLAG_UPDATE_CURRENT));
-    }
-
 
 }
